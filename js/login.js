@@ -14,7 +14,7 @@ $(document).ready(function(e){
 	androidToken = window.localStorage.getItem("androidToken");
     iosToken = window.localStorage.getItem("iosToken");
 	document.addEventListener("deviceready", function() { 
-	_notify();
+	//_notify();
 	}, false);
 	email.blur(validateEmailUsername);	
 	password.blur(validateLpassword);
