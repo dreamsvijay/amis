@@ -22,7 +22,7 @@ $(document).ready(function(e){
 	password.keyup(validateLpassword);
 		$('#login-form').submit(function(){ 
 				if(validateEmailUsername() & validateLpassword() )
-				{
+				{ alert(1);
         androidToken = window.localStorage.getItem("androidToken");
         iosToken = window.localStorage.getItem("iosToken");
         var dataString ="uname="+$("#email").val()+"&pass="+$("#password").val()+"&android="+androidToken+"&ios="+iosToken;
@@ -35,7 +35,7 @@ $(document).ready(function(e){
                 $(".loading-mask").css('opacity','0.5');
                // disableBack = true;
             },
-            success:function(data){
+            success:function(data){alert(2);
                // disableBack = false;
 				$(".loading-mask").css('opacity','0');
                 if(data.res==1){
