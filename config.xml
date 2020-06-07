@@ -38,10 +38,12 @@
     <!--<preference name="android-windowSoftInputMode" value="stateHidden|adjustResize" />-->
 	<preference name="AndroidPersistentFileLocation" value="Compatibility" />
     <!--<plugin name="com.phonegap.plugins.pushplugin" spec="2.5.0" source="pgb" />-->
-    <plugin name="org.apache.cordova.network-information" source="pgb" />
-    <plugin name="org.apache.cordova.dialogs" source="pgb" />
-    <plugin name="org.apache.cordova.splashscreen" source="pgb" />
-    <plugin name="org.apache.cordova.media" source="pgb" />    
+    <plugin name="cordova-plugin-network-information" source="npm"/>
+    <plugin name="cordova-plugin-dialogs" source="npm"/>
+    <plugin name="cordova-plugin-splashscreen" source="npm"/>
+    <plugin name="cordova-plugin-media" source="npm"/>
+	<plugin name="cordova-plugin-file" source="npm"/>
+	<plugin name="cordova-plugin-file-transfer" source="npm"/>   
     <!--<plugin name="cordova-plugin-device" source="pgb" />
     <plugin name="cordova-plugin-file" source="pgb" />
     <plugin name="cordova-plugin-file-transfer" source="pgb" />-->
