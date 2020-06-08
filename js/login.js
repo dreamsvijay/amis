@@ -35,6 +35,11 @@ $(document).ready(function(e){
                 $(".loading-mask").css('opacity','0.5');
                // disableBack = true;
             },
+			error: function(xhr, status, error) {
+
+                     alert(xhr.status+status+error);
+
+                 },
             success:function(data){alert(2);
                // disableBack = false;
 				$(".loading-mask").css('opacity','0');
