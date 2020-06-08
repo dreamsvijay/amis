@@ -73,5 +73,6 @@
     <gap:splash gap:platform="ios" src="res/screen/ios/Default-portrait-ipad.png" width="768" height="1024" />
     <gap:splash gap:platform="ios" src="res/screen/ios/Default-Portrait@2x-ipad.png" width="1536" height="2008" />
   
-    <access origin="*" />
+    <access origin="http://amisapp.ansarullah.co.uk/" />
+	<allow-navigation href="http://amisapp.ansarullah.co.uk"/>
 </widget>
