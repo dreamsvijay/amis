@@ -88,7 +88,7 @@
           
           </div><a style="float:right;text-align:right;color:blue;" class="edit_profile">Edit</a>
           <form id="profile-form" name="profile-form" action="#" method="post">
-            <input type="hidden" name="profile_id" name="profile_id" value="" />
+            <input type="hidden" id="profile_id" name="profile_id" value="" />
             <div class="separator-button-input"></div>
             <div>
               <label class="label-form" for="full-name-field">NAME</label>
@@ -155,11 +155,18 @@
                   <div class="separator-fields"></div>
                 </div>
             </div>
-            </div>
+            
             <input class="w-button action-button" type="submit" value="REQUEST CHANGES NOW" id="profile_save" name="profile_save" style="display:none;" data-wait="Please wait...">
           </form>
+          </div>
           <div class="w-form-done">
-            <p>Thank you! Your submission has been received!</p>
+            <p class="w-clearfix w-inline-block small-button">REQUEST UPDATED</p><br />
+            <p><b>Jazak’Allah for updating your profile.</b></p>
+            <p><b>The requested changes have been sent to the National Administration for review.
+                <br />
+                Either the details you have requested will be updated automatically or you may be contacted directly.</b>
+            </p>
+            <p><a href="home.html" class="w-button action-button">Go to Home Screen</a></p>
           </div>
           <div class="w-form-fail">
             <p>Oops! Something went wrong while submitting the form</p>
@@ -171,6 +178,7 @@
       <div class="loading-icon">
         <div class="navbar-button-icon icon ion-load-d"></div>
       </div>
+      
     </div>
   </section>
   <script src="js/webfont.js"></script>

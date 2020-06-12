@@ -76,13 +76,15 @@ $(document).ready(function(e) {
             dataType:"json",
             beforeSend:function(){
                 $(".loading-mask").css('opacity','0.5');
-               // disableBack = true;
+               // disableBack =" true;
             },
-            success:function(data){ alert(data.det);
+            success:function(data){ 
                // disableBack = false;
 				$(".loading-mask").css('opacity','0');
-                if(data.res==1){
-                    location.href = "home.html";
+                if(data.res=="1"){
+                    $( ".w-form" ).scrollTop( 300 );
+					$(".w-form-done").show();
+					$(".w-form").hide();
                 }else{
 					$('#femail').addClass("error");
                     setTimeout(function(){$('.ajaxOverlay').hide();$('.login_err').html(data.det);}, 2000);
