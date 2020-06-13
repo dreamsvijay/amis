@@ -37,7 +37,7 @@ $(document).ready(function(e){
             },
 			error: function(xhr, status, error) {
 
-                     alert(xhr.status+status+error);
+                     //alert(xhr.status+status+error);
 
                  },
             success:function(data){

@@ -42,7 +42,7 @@ $(document).ready(function(e) {
         }
             //str += '<div class="w-col w-col-tiny-3"><div class="message-title">'+ msq_times[i]+ '</div></div>';
         if(latitude){
-            str += '<div class="w-col w-col-tiny-3"><div class="message-title">'+ times[i]+ '</div></div></div>';
+            str += '<div class="w-col w-col-tiny-3"><div class="message-title" style="text-align:center;">'+ times[i]+ '</div></div></div>';
         }else{
             str += '<div class="w-col w-col-tiny-3"><div class="message-title">0:00</div></div></div>';
         }

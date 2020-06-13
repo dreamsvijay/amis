@@ -143,6 +143,7 @@ var camearaOptions = {
         }
 
 function getImage() {
+	alert();
 	navigator.camera.getPicture(uploadPhoto, onError, camearaOptions);
 }
 
