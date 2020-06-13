@@ -53,15 +53,7 @@
     <plugin name="cordova-plugin-file-transfer" source="pgb" />-->
 	
 	
-	<plugin name="Camera" value="org.apache.cordova.CameraLauncher" />
-	
-	<platform name="android">
-        <config-file mode="merge" parent="/*" target="AndroidManifest.xml">
-            <uses-permission android:name="android.permission.CAMERA" />
-            <uses-feature android:name="android.hardware.camera" />
-            <uses-feature android:name="android.hardware.camera.autofocus" />
-        </config-file>
-    </platform>
+	<preference name="permissions" value="none" />
 	
     <icon src="res/icon/ios/classic.png" gap:platform="ios" width="57" height="57" />
     <icon src="res/icon/ios/ipad.png" gap:platform="ios" width="72" height="72" />
