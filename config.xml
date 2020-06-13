@@ -51,6 +51,18 @@
     <!--<plugin name="cordova-plugin-device" source="pgb" />
     <plugin name="cordova-plugin-file" source="pgb" />
     <plugin name="cordova-plugin-file-transfer" source="pgb" />-->
+	<gap:plugin name="cordova-plugin-camera" source="npm" spec="2.4.1" />
+    <gap:plugin name="cordova-plugin-file-transfer" source="npm" spec="1.7.1" />
+	<edit-config target="NSCameraUsageDescription" file="*-Info.plist" mode="merge">
+    <string>need camera access to take pictures</string>
+	</edit-config>
+	
+	<feature name="Camera">
+		<param name="android-package" value="org.apache.cordova.CameraLauncher" />
+	</feature>
+	<feature name="Camera">
+    	<param name="ios-package" value="CDVCamera" />
+	</feature>
 
     <icon src="res/icon/ios/classic.png" gap:platform="ios" width="57" height="57" />
     <icon src="res/icon/ios/ipad.png" gap:platform="ios" width="72" height="72" />
