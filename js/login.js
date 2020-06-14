@@ -185,11 +185,13 @@ $(document).ready(function(e){
                 $(".loading-mask").css('opacity','0.5');
                // disableBack = true;
             },
-            success:function(data){ alert(data.det);
+            success:function(data){ 
                // disableBack = false;
 				$(".loading-mask").css('opacity','0');
                 if(data.res==1){
-                    location.href = "login.html";
+                   // location.href = "login.html";
+				   $(".w-form-done").show();
+					$(".w-form").hide();
                 }else{
 					$('#femail').addClass("error");
                     setTimeout(function(){$('.ajaxOverlay').hide();$('.login_err').html(data.det);}, 2000);
