@@ -189,7 +189,7 @@ $(document).ready(function(e){
                // disableBack = false;
 				$(".loading-mask").css('opacity','0');
                 if(data.res==1){
-                    location.href = "home.html";
+                    location.href = "login.html";
                 }else{
 					$('#femail').addClass("error");
                     setTimeout(function(){$('.ajaxOverlay').hide();$('.login_err').html(data.det);}, 2000);

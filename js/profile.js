@@ -1,8 +1,9 @@
 var codeDate = new Date(); 
 $(document).ready(function(e) {
 	$("#membercode").val(window.localStorage.getItem("member_code"));
-	$("#majlis").val(window.localStorage.getItem("area"));
-	$("#region").val(window.localStorage.getItem("region"));
+	$(".mem_code").html(window.localStorage.getItem("member_code"));
+	//$("#majlis").val(window.localStorage.getItem("area"));
+	//$("#region").val(window.localStorage.getItem("region"));
 	$("#fullname").val(window.localStorage.getItem("first_name"));
 	//$("#email").val(window.localStorage.getItem("member_code"));
 	//$("#phone").val(window.localStorage.getItem("member_code"));
@@ -22,8 +23,13 @@ $(document).ready(function(e) {
 				$("#phone").val(data.det['mobile']);
 				$("#membercode").val(data.det['m_code']);
 				$("#willno").val(data.det['willno']);
-				$("#majlis").val(data.det['area']);
-				$("#region").val(data.det['region']);
+				if(data.det['moosi'] == "true"){
+					$("#checkbox-2").attr('checked','checked');
+					$(".checkbox-handle").addClass('checked');
+				}
+				$("#checkbox-2").val(data.det['moosi']);
+				//$("#majlis").val(data.det['area']);
+				//$("#region").val(data.det['region']);
 				if(data.det['national_pos'][0]){
 					$("input[name='national_pos[]']:first").val(data.det['national_pos'][0]);
 				}
@@ -63,12 +69,35 @@ $(document).ready(function(e) {
         });
 	
 	
+		var dataString = "user_id="+window.localStorage.getItem("user_id");
+    $('#details_event').html('');
+    $.ajax({
+        url:'http://amisapp.ansarullah.co.uk/mobile_newapp/regions',
+         type:'POST',
+        data:dataString,
+        success:function(data){
+			  $("#region").append(data);
+			  $("#region option:contains(" + window.localStorage.getItem("region") + ")").attr('selected', 'selected');
+			  $( "#region" ).trigger( "change" );
+        }
+    });
+	
 		$('#profile-form').submit(function(){
 				//if(validateFemail() )
 				{
         androidToken = window.localStorage.getItem("androidToken");
         iosToken = window.localStorage.getItem("iosToken");
-        var dataString ="profile_id="+$("#profile_id").val()+"&fullname="+$("#fullname").val()+"&postcode="+$("#postcode").val()+"&email="+$("#email").val()+"&phone="+$("#phone").val()+"&android="+androidToken+"&ios="+iosToken;
+		var majlis_pos = $('input[name="majlis_pos[]"]').map(function(){ 
+                    return this.value; 
+                }).get();
+		var region_pos = $('input[name="region_pos[]"]').map(function(){ 
+                    return this.value; 
+                }).get();
+		var national_pos = $('input[name="national_pos[]"]').map(function(){ 
+                    return this.value; 
+                }).get();
+        var dataString ="profile_id="+$("#profile_id").val()+"&fullname="+$("#fullname").val()+"&postcode="+$("#postcode").val()+"&email="+$("#email").val()+"&phone="+$("#phone").val()+"&musi="+$("#checkbox-2").val()+"&willno="+$("#willno").val()+"&region="+$("#region").val()+"&majlis="+$("#majlis").val()+"&majlis_pos="+majlis_pos+"&region_pos="+region_pos+"&national_pos="+national_pos+"&android="+androidToken+"&ios="+iosToken;
+		
         $.ajax({
             url:"http://amisapp.ansarullah.co.uk/mobile_newapp/update_profile",
             type:"POST",
@@ -100,6 +129,20 @@ $(document).ready(function(e) {
 		});
 	
 	});
+	
+$(document).on('change','#region',function(){
+	var dataString = "reg_id="+$('#region').val();
+    $.ajax({
+        url:'http://amisapp.ansarullah.co.uk/mobile_app/area',
+        type:'POST',
+        data:dataString,
+        success:function(data){
+           $('#majlis').children().remove().end().append(data);
+		   $("#majlis option:contains(" + window.localStorage.getItem("area") + ")").attr('selected', 'selected');
+        }
+    });
+});
+
 
 $("#add_majlis").on('click',function(){
 	var i = 0;
@@ -107,7 +150,7 @@ $("#add_majlis").on('click',function(){
         i++;
     });
 	if(i < 3){
-		$("input[name='majlis_pos[]']").parent().parent().append($(".majlis_sec").find('div:eq(0)').clone());
+		$("input[name='majlis_pos[]']").parent().parent().append($(".majlis_sec").find('div:eq(0)').clone().find('input').val(''));
 	}
 });
 
@@ -117,7 +160,7 @@ $("#add_region").on('click',function(){
         i++;
     });
 	if(i < 3){
-		$("input[name='region_pos[]']").parent().parent().append($(".region_sec").find('div:eq(0)').clone());
+		$("input[name='region_pos[]']").parent().parent().append($(".region_sec").find('div:eq(0)').clone().find('input').val(''));
 	}
 });
 
@@ -127,42 +170,17 @@ $("#add_nation").on('click',function(){
         i++;
     });
 	if(i < 3){
-		$("input[name='national_pos[]']").parent().parent().append($(".nation_sec").find('div:eq(0)').clone());
+		$("input[name='national_pos[]']").parent().parent().append($(".nation_sec").find('div:eq(0)').clone().find('input').val(''));
 	}
 });
 
 $(".edit_profile").on('click',function(){
-	$("#fullname, #postcode, #email, #phone, #majlis_pos, #region_pos, #national_pos").prop('disabled',false);
-	$("#profile_save").show();	
+	$("#fullname, #postcode, #email, #phone, #majlis_pos, #region_pos, #national_pos, #musi, #willno").prop('disabled',false);
+	$("#profile_save").show();
+	$(".mem_code").show();
+	$(".member_code").hide();	
 });
 
-var camearaOptions = {
-            quality: 100,
-            destinationType: navigator.camera.DestinationType.FILE_URI,
-            sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
-        }
 
-function getImage() {
-	alert();
-	navigator.camera.getPicture(uploadPhoto, onError, camearaOptions);
-}
 
-function onError(err) {
-	alert(error);
-}
-
-function uploadPhoto(imageURI) {
-	var options = new FileUploadOptions();
-	options.fileKey = "file";
-	options.fileName = imageURI.substr(imageURI.lastIndexOf('/') + 1);
-	options.mimeType = "image/jpeg";
-	var ft = new FileTransfer();
-	ft.upload(imageURI, "http://amisapp.ansarullah.co.uk/mobile_newapp/profile_image",
-		function(result) {
-			console.log(JSON.stringify(result));
-		},
-		function(error) {
-			console.log(JSON.stringify(error));
-		}, options);
-}
 

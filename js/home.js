@@ -33,7 +33,7 @@ $(document).ready(function(e) {
                 
     for(var i = 0; i < 6; i++) {
         
-        str += '<div class="w-row list-message"><div class="w-col w-col-tiny-5"><div class="message-title">'+ prayTime.timeNames[i]+ '</div></div>';
+        str += '<div class="w-row list-message"><div class="w-col w-col-tiny-4"><div class="message-title">'+ prayTime.timeNames[i]+ '</div></div>';
         if (i == 0) {
             if(latitude){
                 times[0] = newFajr;
@@ -42,9 +42,9 @@ $(document).ready(function(e) {
         }
             //str += '<div class="w-col w-col-tiny-3"><div class="message-title">'+ msq_times[i]+ '</div></div>';
         if(latitude){
-            str += '<div class="w-col w-col-tiny-3"><div class="message-title" style="text-align:center;">'+ times[i]+ '</div></div></div>';
+            str += '<div class="w-col w-col-tiny-8" style="text-align:center;"><div class="message-title" >'+ times[i]+ '</div></div></div>';
         }else{
-            str += '<div class="w-col w-col-tiny-3"><div class="message-title">0:00</div></div></div>';
+            str += '<div class="w-col w-col-tiny-8" style="text-align:center;"><div class="message-title">0:00</div></div></div>';
         }
     }
 	$(".salat-times").append(str);

@@ -1704,3 +1704,6 @@ input[type=text]:focus, textarea:focus {
 #meeting-view .toolbar-top-button{width:18.33% !important;}
 
 .profile-icon img{border-radius:50%;width:88%;}
+
+.col_blue{color:blue;}
+.bor_blue{border:1px solid blue;}
