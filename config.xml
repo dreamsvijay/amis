@@ -84,4 +84,11 @@
     <access origin="tel:*" launch-external="yes" />
     <access origin="http://amisapp.ansarullah.co.uk/" />
 	<allow-navigation href="http://amisapp.ansarullah.co.uk"/>
+	<allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <plugin name="cordova-plugin-geolocation" spec="4.0.1" />
+    <platform name="android">
+        <allow-intent href="market:*" />
+    </platform>
+    <engine name="android" spec="^7.1.4" />
 </widget>
