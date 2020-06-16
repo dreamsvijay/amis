@@ -52,9 +52,9 @@
     <plugin name="cordova-plugin-file" source="pgb" />
     <plugin name="cordova-plugin-file-transfer" source="pgb" />-->
 	
-	<config-file platform="android" parent="/manifest" mode="replace">
-    	<application android:usesCleartextTraffic="true" />
-	</config-file>
+	<edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
+	<application android:usesCleartextTraffic="true" />
+	</edit-config>
 	<plugin name="phonegap-plugin-media-stream" source="npm" spec="~1.2.1" />
 	
     <icon src="res/icon/ios/classic.png" gap:platform="ios" width="57" height="57" />
